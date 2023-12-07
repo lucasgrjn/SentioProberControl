@@ -71,3 +71,12 @@ class SiPHCommandGroup(CommandGroupBase):
 
         self._comm.send(f"siph:move_separation {probe.toSentioAbbr()}")
         Response.check_resp(self._comm.read_line())
+
+    def move_origin(self, probe: ProbeSentio) -> None:
+        """Move SiPh probe to origin position.
+
+        :param probe: The probe on which the SiPh probe is mounted.
+        :raises: ProberException if an error occured.
+        """
+        self._comm.send(f"siph:move_origin {probe.toSentioAbbr()}")
+        Response.check_resp(self._comm.read_line())
